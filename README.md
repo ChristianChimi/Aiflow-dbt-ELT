@@ -32,3 +32,14 @@ financial_analytics/
 │   └── profiles.yml          # Database connection profiles
 │
 └── docker-compose.yml        # Infrastructure setup (Airflow + Postgres)
+
+## Pipeline Workflow
+
+* **Extraction & Incremental Load (`PythonOperator`):**
+  * Queries the PostgreSQL database to check the latest available date (`max(date)`) for each stock ticker (`AAPL`, `MSFT`, `TSLA`, `GOOGL`, `AMZN`).
+  * Fetches only missing or new daily records from Yahoo Finance via `yfinance`.
+  * Appends the new rows idempotently to the `raw_stock_prices` table to avoid duplicates.
+
+* **Transformation (`BashOperator` running `dbt build`):**
+  * Automatically triggered upon successful ingestion.
+  * Runs dbt seeds, staging transformations, and analytical marts incrementally to keep data models up to date.

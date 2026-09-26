@@ -4,7 +4,7 @@ An end-to-end automated ELT (Extract, Load, Transform) data pipeline designed to
 
 ---
 
-## 🏗️ Architecture & Tech Stack
+## Architecture & Tech Stack
 
 * **Orchestration:** Apache Airflow (DAGs configured with sequential task dependencies and concurrency controls).
 * **Ingestion:** Python (using `yfinance` to fetch live historical stock data) with incremental append logic.

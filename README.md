@@ -27,13 +27,14 @@ An end-to-end automated ELT (Extract, Load, Transform) data pipeline designed to
 ## 📂 Project Structure
 
 ```text
-financial_analytics/
+
+Airflow-dbt-ELT/
 │
-├── airflow/                  # Airflow configuration and DAGs
+├── airflow-project/          # Airflow configuration and DAGs
 │   └── dags/
 │       └── stock_market_elt_pipeline.py
 │
-├── financial_analytics/      # dbt project root
+├── financial-analytics/      # dbt project root
 │   ├── models/
 │   │   ├── staging/          # Staging models (cleaning raw data)
 │   │   └── marts/            # Business-ready models and aggregations
@@ -42,5 +43,4 @@ financial_analytics/
 │   └── profiles.yml          # Database connection profiles
 │
 └── docker-compose.yml        # Infrastructure setup (Airflow + Postgres)
-
 

@@ -84,9 +84,9 @@ with DAG(
     )
 
     dbt_build_task = BashOperator(
-        task_id='dbt_build_transformations',
-        bash_command='cd /opt/airflow/financial-analytics && pip install dbt-postgres && dbt build --profiles-dir .',
-    )
+    task_id='dbt_build_transformations',
+    bash_command='cd /opt/airflow/financial_analytics && pip install dbt-postgres && dbt build --profiles-dir .',
+)
 
     # Sequential dependencies definition
     ingest_task >> dbt_build_task
